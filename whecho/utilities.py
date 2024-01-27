@@ -9,7 +9,7 @@ import os
 
 def get_version():
     """Returns the version of whecho."""
-    with open('pyproject.toml', 'r') as f:
+    with open('../pyproject.toml', 'r') as f:
         pyproject = toml.load(f)
     return pyproject['tool']['poetry']['version']
 
