@@ -3,15 +3,13 @@
 #
 # Contains utility functions for the whecho project.
 
-import toml
+import pkg_resources
 import os
 
 
 def get_version():
     """Returns the version of whecho."""
-    with open('../pyproject.toml', 'r') as f:
-        pyproject = toml.load(f)
-    return pyproject['tool']['poetry']['version']
+    return pkg_resources.get_distribution('whecho').version
 
 def check_init():
     """Checks if whecho --init has been run. If it has, there should be a .whecho directory in the user's home directory."""
