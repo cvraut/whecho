@@ -6,8 +6,11 @@ Raise an issue or submit a pull request if you have any new ideas!
 
 ## building the project
 - clone the repo & go to the directory of the `pyproject.toml` file
-- install poetry if you haven't already ([conda](https://anaconda.org/conda-forge/poetry), [pip](https://pypi.org/project/poetry/))
+- clone the environment using the supplied environment.yml file
+  - run `conda env create --file environment.yml`
 - run `poetry build`
 
 ## running the unit tests
-- 
+- make sure you have the environment installed
+- navigate to the tests directory
+- run `pytest`
