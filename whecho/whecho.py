@@ -1,5 +1,5 @@
 import argparse
-import utilities
+from whecho import utilities
 
 def main():
     parser = argparse.ArgumentParser(prog='whecho', description='Linux echo with webhooks! ⚓')

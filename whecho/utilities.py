@@ -1,6 +1,3 @@
-# utilities.py
-# author: Chinmay Raut (20240127)
-#
 # Contains utility functions for the whecho project.
 
 import pkg_resources
