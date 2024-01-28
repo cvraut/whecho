@@ -30,8 +30,5 @@ jobs:
         run: pip install tox
 
       - name: Run tests
-        run: |
-          printenv | cut -d= -f1
-          echo ${TEST_URL:0:5}
-          tox
+        run: tox
         
