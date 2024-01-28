@@ -3,27 +3,39 @@ linux echo but with webhooks! 🪝
 
 Don't guess when a job is finished! Have it message you!
 
+## requirements
+- python 3.6+
+
 ## installation
-
-TODO
-
-## Usage
-
-### First Time Setup
 ```
-whecho --init
+pip install whecho
 ```
 
-### general usage
-in a bash script
-```
-# test.sh
-whecho "hello there"
-```
-TODO include image from server/channel to demonstrate what it does
+## First Time Setup
+- obtain a webhook URL
+![discord_webhook_example](https://i.imgur.com/f9XnAew.png)
 
-in the shell
+```
+$ whecho --init
+Current config:
+[1] default_url: None
+[2] user: craut
+[3] machine: craut-spectre
+
+Please enter the number/name of the config option you would like to modify (empty or Q to exit): 1
+Please enter the new value for default_url: <WEBHOOK_URL>
+Successfully modified default_url to <WEBHOOK_URL>!
+Current config:
+[1] default_url: <WEBHOOK_URL>
+[2] user: craut
+[3] machine: craut-spectre
+
+Please enter the number/name of the config option you would like to modify (empty or Q to exit): q
+Successfully initialized whecho!
+```
+
+## general usage (from shell/console)
 ```
 $ whecho "hello there"
 ```
-TODO include image from server/channel to demonstrate what it does
+![hello_there_discord](imgs/hello_there_discord.png)
