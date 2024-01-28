@@ -2,9 +2,9 @@
 
 import pkg_resources
 import os
-from whecho import config
+from whecho import _config as config
 import toml
-from whecho import send_message
+from whecho import _send_message as send_message
 
 def get_version():
     """Prints the version of whecho and exits."""
@@ -37,15 +37,17 @@ def process_args(args):
     
     if args.init:
         init()
-    c = config.get_config()
+    c = config.get_config(args.debug)
     if args.debug:
         print(f"Config: {c}")
     
-    m = args.msg if args.msg else args.message
+    m = args.msg if args.msg else " ".join(args.message)
+    if args.debug:
+        print(f"Message: {m}")
     if not m and not args.init:
         print('No message passed. Try whecho --help for more info.')
         exit(1)
     elif m:
         url = args.url if args.url else c['default_url']
         # send the message
-        send_message.post_simple(args.message, url, c, args.debug)
+        send_message.post_simple(m, url, c, args.debug)

@@ -15,9 +15,9 @@ DEFAULT_CONFIG = {'default_url': None,
 NOT_MODIFIABLE = ['version', 'os']
 
 # use different locations for different OSes
-CONFIG_PATH = {'Linux': '~/.config/.whecho/config.toml',
-               'Windows': f'C:\\Users\\{DEFAULT_CONFIG["user"]}\\AppData\\Roaming\\.whecho\\config.toml',
-               'Darwin': '~/Library/Application Support/.whecho/config.toml'}[DEFAULT_CONFIG['os']]
+CONFIG_PATH = {'Linux': os.path.expanduser('~/.config/.whecho/config.toml'),
+               'Windows': os.path.expanduser('~\\AppData\\Roaming\\.whecho\\config.toml'),
+               'Darwin': os.path.expanduser('~/Library/Application Support/.whecho/config.toml')}[DEFAULT_CONFIG['os']]
 
 def check_init():
     """Checks if whecho --init has been run. If it has, there should be a config.toml file in the CONFIG_PATH."""
@@ -67,8 +67,10 @@ def modify_config(config):
     # save the config
     return save_config(config)
 
-def get_config():
+def get_config(debug=False):
     """Returns the config file as a dictionary."""
+    if debug:
+        print(f"Config pulled from : {CONFIG_PATH}")
     if check_init():
         with open(CONFIG_PATH, 'r') as f:
             config = toml.load(f)
