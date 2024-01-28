@@ -28,3 +28,5 @@ jobs:
 
       - name: Run tests
         run: tox
+        env:
+          TEST_URL: ${{secrets.TEST_URL}}
