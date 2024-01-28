@@ -5,18 +5,29 @@ import getpass
 import pkg_resources
 import toml
 import socket
+import platform
 
 DEFAULT_CONFIG = {'default_url': None,
                   'version': pkg_resources.get_distribution('whecho').version,
                   'user': getpass.getuser(),
-                  'os': os.uname().sysname,
+                  'os': platform.system(),
                   'machine': socket.gethostname(),}
 NOT_MODIFIABLE = ['version', 'os']
 
+# use different locations for different OSes
+CONFIG_PATH = {'Linux': '~/.config/.whecho/config.toml',
+               'Windows': f'C:\\Users\\{DEFAULT_CONFIG["user"]}\\AppData\\Roaming\\.whecho\\config.toml',
+               'Darwin': '~/Library/Application Support/.whecho/config.toml'}[DEFAULT_CONFIG['os']]
+
+def check_init():
+    """Checks if whecho --init has been run. If it has, there should be a config.toml file in the CONFIG_PATH."""
+    return os.path.exists(CONFIG_PATH)
+
 def create_new_config():
     """Creates a new config file."""
+    CONFIG_DIR = os.path.dirname(CONFIG_PATH)
     # create the config directory
-    os.makedirs(os.path.expanduser('~/.whecho'), exist_ok=True)    
+    os.makedirs(CONFIG_DIR, exist_ok=True)
     # let the user modify the config
     modified_config = modify_config(DEFAULT_CONFIG)
     
@@ -25,7 +36,7 @@ def create_new_config():
 
 def save_config(config):
     """Saves the config to the file."""
-    with open(os.path.expanduser('~/.whecho/config.toml'), 'w+') as f:
+    with open(CONFIG_PATH, 'w+') as f:
         toml.dump(config, f)
     return config
         
@@ -58,13 +69,16 @@ def modify_config(config):
 
 def get_config():
     """Returns the config file as a dictionary."""
-    with open(os.path.expanduser('~/.whecho/config.toml'), 'r') as f:
-        config = toml.load(f)
-    # check if the config is not corrupted
-    for key in DEFAULT_CONFIG:
-        if key not in config:
-            print(f"whecho config is corrupted. {key} not found. Loading missing key from default. Please run whecho --init to fix this.")
-            config[key] = DEFAULT_CONFIG[key]
+    if check_init():
+        with open(CONFIG_PATH, 'r') as f:
+            config = toml.load(f)
+        # check if the config is not corrupted
+        for key in DEFAULT_CONFIG:
+            if key not in config:
+                print(f"whecho config is corrupted. {key} not found. Loading missing key from default. Please run whecho --init to fix this.")
+                config[key] = DEFAULT_CONFIG[key]
+    else:
+        config = DEFAULT_CONFIG
     return config
 
 def display_config(config):
