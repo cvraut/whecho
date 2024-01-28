@@ -1,5 +1,9 @@
 # internal notes
 notes/
+tests/setup.sh
+
+# IDE stuffs
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

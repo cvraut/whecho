@@ -10,10 +10,13 @@ on:
       - main
       - dev
 
+env:
+  TEST_URL: ${{secrets.TEST_URL}}
+
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    environment: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,3 +31,4 @@ jobs:
 
       - name: Run tests
         run: tox
+        
