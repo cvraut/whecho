@@ -30,5 +30,7 @@ jobs:
         run: pip install tox
 
       - name: Run tests
-        run: tox
+        run: |
+          printenv | cut -d= -f1
+          tox
         
