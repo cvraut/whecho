@@ -1,9 +1,12 @@
 import subprocess
 import toml
+import os
 
 def test_version_consistency():
+    # get the directory of the test_version.py file
+    test_version_path = os.path.dirname(os.path.realpath(__file__))
     # Read the version from pyproject.toml
-    with open("../pyproject.toml", "r") as f:
+    with open(f"{test_version_path}/../pyproject.toml", "r") as f:
         pyproject_data = toml.load(f)
     expected_version = pyproject_data["tool"]["poetry"]["version"]
 

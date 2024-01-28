@@ -9,6 +9,7 @@ Raise an issue or submit a pull request if you have any new ideas!
 - clone the environment using the supplied environment.yml file
   - run `conda env create --file environment.yml`
 - run `poetry build`
+- install with `python -I -m pip install --force-reinstall --no-deps dist/whecho-0.0.0.tar.gz`
 
 ## running the unit tests
 - make sure you have the environment installed
