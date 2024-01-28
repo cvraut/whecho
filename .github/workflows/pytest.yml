@@ -27,6 +27,7 @@ jobs:
         run: pip install tox
 
       - name: Run tests
-        run: tox
         env:
           TEST_URL: ${{secrets.TEST_URL}}
+        run: tox
+        
