@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "whecho"
-version = "0.0.0"
+version = "0.0.1"
 description = "Linux echo with webhooks! ⚓"
 readme = "README.md"
 authors = [
