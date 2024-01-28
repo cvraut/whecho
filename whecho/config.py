@@ -4,12 +4,13 @@ import os
 import getpass
 import pkg_resources
 import toml
+import socket
 
 DEFAULT_CONFIG = {'default_url': None,
                   'version': pkg_resources.get_distribution('whecho').version,
                   'user': getpass.getuser(),
                   'os': os.uname().sysname,
-                  'machine': os.uname().machine,}
+                  'machine': socket.gethostname(),}
 NOT_MODIFIABLE = ['version', 'os']
 
 def create_new_config():
@@ -70,7 +71,7 @@ def display_config(config):
     """Displays the config to the user."""
     print('Current config:')
     num_mapping = {}
-    for i,kv in enumerate(i for i in config.items() if i[0] != 'version'):
+    for i,kv in enumerate(i for i in config.items() if i[0] not in NOT_MODIFIABLE):
         key,value = kv
         print(f'[{i+1}] {key}: {value}')
         num_mapping[i+1] = key

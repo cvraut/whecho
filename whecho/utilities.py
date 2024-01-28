@@ -33,6 +33,12 @@ def process_args(args):
         print(f"Arguments passed: {args}")
     if args.version:
         get_version()
+        
+    # check the config file
+    if not check_init() and not args.init:
+        print('whecho is not initialized. Please run whecho --init to initialize whecho.')
+        exit(1)
+    
     if args.init:
         init()
     c = config.get_config()
