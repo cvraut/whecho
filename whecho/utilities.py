@@ -11,14 +11,10 @@ def get_version():
     print(pkg_resources.get_distribution('whecho').version)
     exit(0)
 
-def check_init():
-    """Checks if whecho --init has been run. If it has, there should be a ~/.whecho/config.toml file in the user's home directory."""
-    return os.path.exists(os.path.expanduser('~/.whecho/config.toml'))
-
 def init():
     """Initializes whecho."""
     # check if whecho is already initialized
-    if check_init():
+    if config.check_init():
         print('whecho is already initialized. Loading config file for changes')
         config.modify_config(config.get_config())
     else:
@@ -35,7 +31,7 @@ def process_args(args):
         get_version()
         
     # check the config file
-    if not check_init() and not args.init:
+    if not config.check_init() and not args.url and not args.init:
         print('whecho is not initialized. Please run whecho --init to initialize whecho.')
         exit(1)
     

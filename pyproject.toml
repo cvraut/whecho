@@ -1,11 +1,10 @@
 [tool.poetry]
 name = "whecho"
-version = "0.0.1"
+version = "0.0.3"
 description = "Linux echo with webhooks! ⚓"
 readme = "README.md"
 authors = [
   "Chinmay Raut",
-  "Wendy Yu"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.6",
@@ -27,6 +26,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 whecho = "whecho:whecho.main"
 
-[project.urls]
-"Homepage" = "https://github.com/cvraut/whecho"
+[tool.poetry.urls]
+homepage = "https://github.com/cvraut/whecho"
+repository = "https://github.com/cvraut/whecho"
 "Bug Tracker" = "https://github.com/cvraut/whecho/issues"
