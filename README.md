@@ -1,5 +1,5 @@
 # whecho
-linux echo but with webhooks! 🪝
+linux echo but with webhooks! ⚓
 
 Don't guess when a job is finished! Have it message you!
 
@@ -38,4 +38,4 @@ Successfully initialized whecho!
 ```
 $ whecho "hello there"
 ```
-![hello_there_discord](imgs/hello_there_discord.png)
+![hello_there_discord](https://github.com/cvraut/whecho/blob/main/imgs/hello_there_discord.png?raw=true)
