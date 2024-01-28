@@ -1,11 +1,10 @@
 [tool.poetry]
 name = "whecho"
-version = "0.0.1"
+version = "0.0.3"
 description = "Linux echo with webhooks! ⚓"
 readme = "README.md"
 authors = [
   "Chinmay Raut",
-  "Wendy Yu"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.6",
