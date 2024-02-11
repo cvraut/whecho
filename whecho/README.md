@@ -16,5 +16,8 @@ Raise an issue or submit a pull request if you have any new ideas!
 - make sure you have the environment installed
 - navigate to the tests directory
 - run `pytest`
-- NOTE: to pass all the tests you must have a `TEST_URL` environment variable pointing to a valid webhook URL
-  - tox makes use of `TEST_URL` during the automated testing
+- NOTE: to pass all the tests you must have the following environment variables pointing to a valid webhook URL
+  - `TEST_URL` pointing to a discord webhook
+  - `TEST_SLACK_URL` pointing to a slack webhook
+  - `TEST_WEBEX_URL` pointing to a webex webhook
+  - tox makes use of these environment variables during the automated testing
