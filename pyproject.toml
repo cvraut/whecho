@@ -5,6 +5,7 @@ description = "Linux echo with webhooks! ⚓"
 readme = "README.md"
 authors = [
   "Chinmay Raut",
+  "Wendy Yu"
 ]
 homepage = "https://github.com/cvraut/whecho"
 repository = "https://github.com/cvraut/whecho"
