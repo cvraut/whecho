@@ -44,6 +44,13 @@ $ whecho "hello there"
 ```
 ![hello_there_discord](https://github.com/cvraut/whecho/blob/main/imgs/hello_there_discord.png?raw=true)
 
+## usage from python
+```
+from whecho.whecho import whecho_simple
+whecho_simple("I'm inside python 🐍")
+```
+![inside_python](https://github.com/cvraut/whecho/blob/main/imgs/inside_python.png?raw=true)
+
 ## advanced usage
 ```
 $ whecho --help
