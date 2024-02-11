@@ -5,12 +5,8 @@ import subprocess
 import re
 import socket
 import platform
+from whecho import _config as config
 import toml
-
-# use different locations for different OSes
-CONFIG_PATH = {'Linux': os.path.expanduser('~/.config/.whecho/config.toml'),
-               'Windows': os.path.expanduser('~\\AppData\\Roaming\\.whecho\\config.toml'),
-               'Darwin': os.path.expanduser('~/Library/Application Support/.whecho/config.toml')}[platform.system()]
 
 def test_auto_machine():
     # get the test URL
@@ -23,7 +19,7 @@ def test_auto_machine():
     process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
     process.stdin.flush()
     # run option 2 for machine name change
-    input_text = "2"
+    input_text = "machine"
     process.stdin.write(input_text + "\n")
     process.stdin.flush()
     # change machine name to 'auto'
@@ -37,20 +33,18 @@ def test_auto_machine():
     # print stdout and terminate shell after completing change
     stdout, stderr = process.communicate()
     
-    print('stdout:', stdout)
-    print('stderr:', stderr)
     process.terminate()
-    # get toml file and test that machine name is auto
-    with open(CONFIG_PATH, 'r') as f:
-            config = toml.load(f)
-    assert config['machine'] == 'auto'
+
+    # check if machine name has been changed to auto
+    with open(config.CONFIG_PATH, 'r') as f:
+        config_dict = toml.load(f)
+
+    assert config_dict['machine']=="auto"
+
     # use the command line to run whecho and store any errors
     command = f"whecho -u {url} -m 'This is an automated test message.' --debug"
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     stdout, stderr = process.communicate()
-    
-    print('stdout:', stdout)
-    print('stderr:', stderr)
     
     # make sure stderr is a binary empty string
     assert stderr == b''
