@@ -79,10 +79,10 @@ def get_config(debug=False):
             if key not in config:
                 print(f"whecho config is corrupted. {key} not found. Loading missing key from default. Please run whecho --init to fix this.")
                 config[key] = DEFAULT_CONFIG[key]
-        if config['machine'] == 'auto':
-            config['machine'] = socket.gethostname()
     else:
         config = DEFAULT_CONFIG
+    if config['machine'] == 'auto':
+        config['machine'] = socket.gethostname()
     return config
 
 def display_config(config):
