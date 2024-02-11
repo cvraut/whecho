@@ -19,4 +19,5 @@ Raise an issue or submit a pull request if you have any new ideas!
 - NOTE: to pass all the tests you must have the following environment variables pointing to a valid webhook URL
   - `TEST_URL` pointing to a discord webhook
   - `TEST_SLACK_URL` pointing to a slack webhook
+  - `TEST_WEBEX_URL` pointing to a webex webhook
   - tox makes use of these environment variables during the automated testing
