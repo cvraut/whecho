@@ -11,7 +11,7 @@ DEFAULT_CONFIG = {'default_url': None,
                   'version': pkg_resources.get_distribution('whecho').version,
                   'user': getpass.getuser(),
                   'os': platform.system(),
-                  'machine': socket.gethostname(),}
+                  'machine': "auto",}
 NOT_MODIFIABLE = ['version', 'os']
 
 # use different locations for different OSes
