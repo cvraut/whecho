@@ -47,6 +47,5 @@ def get_slack_data(config,message):
 
 def get_default_data(config,message):
     """Get the data to send to a generic webhook."""
-    data = {'username': f"{config['user']}@{config['machine']}", 
-            'content': message}
+    data = {'text': message}
     return data
