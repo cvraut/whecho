@@ -4,7 +4,7 @@ import os
 import subprocess
 import re
 
-def test_simple(env_var='TEST_URL'):
+def simple_post(env_var='TEST_URL'):
     # get the test URL
     url = os.environ.get(f'{env_var}', None)
     if not url:
@@ -24,10 +24,12 @@ def test_simple(env_var='TEST_URL'):
     assert http_code >= 200 and http_code < 300
 
 def test_simple_slack():
-    test_simple('TEST_SLACK_URL')
+    simple_post('TEST_SLACK_URL')
 
 def test_simple_webex():
-    test_simple('TEST_WEBEX_URL')
+    simple_post('TEST_WEBEX_URL')
 
 if __name__ == "__main__":
-    test_simple()
+    simple_post()
+    test_simple_slack()
+    test_simple_webex()
