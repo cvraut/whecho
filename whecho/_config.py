@@ -81,6 +81,8 @@ def get_config(debug=False):
                 config[key] = DEFAULT_CONFIG[key]
     else:
         config = DEFAULT_CONFIG
+    if config['machine'] == 'auto':
+        config['machine'] = socket.gethostname()
     return config
 
 def display_config(config):
