@@ -18,7 +18,7 @@ def test_auto_machine():
     command = f"whecho --init"
     process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
     process.stdin.flush()
-    # run option 2 for machine name change
+    # run machine option for name change
     input_text = "machine"
     process.stdin.write(input_text + "\n")
     process.stdin.flush()
