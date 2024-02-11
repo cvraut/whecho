@@ -77,7 +77,7 @@ def get_config(debug=False):
         # check if the config is not corrupted
         for key in DEFAULT_CONFIG:
             if key not in config:
-                print(f"whecho config is corrupted. {key} not found. Loading missing key from default. Please run whecho --init to fix this.")
+                print(f"whecho config is corrupted. {key} not found. Loading default value {DEFAULT_CONFIG[key]}. Please run whecho --init to fix this.")
                 config[key] = DEFAULT_CONFIG[key]
     else:
         config = DEFAULT_CONFIG
@@ -93,5 +93,6 @@ def display_config(config):
         key,value = kv
         print(f'[{i+1}] {key}: {value}')
         num_mapping[i+1] = key
+        num_mapping[key] = key
     print()
     return num_mapping

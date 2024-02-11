@@ -32,7 +32,7 @@ def process_args(args):
         
     # check the config file
     if not config.check_init() and not args.url and not args.init:
-        print('whecho is not initialized. Please run whecho --init to initialize whecho.')
+        print('whecho is not initialized with a default url. Please run whecho --init to initialize whecho.')
         exit(1)
     
     if args.init:
