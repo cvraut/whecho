@@ -30,6 +30,7 @@ def get_data(conf,message,url,debug=False):
                        "slack.com": get_slack_data,
                        "webhook.office.com": get_teams_data,
                        "webexapis.com": get_webex_data}
+    # load the data based on the URL
     for keyword in url_keyword_map:
         if keyword in url:
             if debug:

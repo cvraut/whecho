@@ -1,5 +1,8 @@
 import argparse
 from whecho import _utilities as utilities
+from whecho._send_message import post_simple
+import requests
+from typing import Optional
 
 def main():
     # deal with arguments
@@ -14,6 +17,18 @@ def main():
     
     # process the arguments
     utilities.process_args(args)
+
+def whecho_simple(msg: str,url: str = "",debug: bool = False) -> Optional[requests.models.Response]:
+    """
+    Makes a post request to the given URL (loads config if not given) using the simple format.
+
+    @param msg: The message to be posted.
+    @param url: The webhook URL to send the message to. If not provided or empty, the config will be loaded.
+    @param debug: Whether to print debugging information. Defaults to False.
+    @return: None. If debug=True, returns the response object from the post request.
+    """
+    return post_simple(msg,url,debug=debug)
+    
 
 if __name__ == '__main__':
     main()
