@@ -26,5 +26,8 @@ def test_simple(env_var='TEST_URL'):
 def test_simple_slack():
     test_simple('TEST_SLACK_URL')
 
+def test_simple_webex():
+    test_simple('TEST_WEBEX_URL')
+
 if __name__ == "__main__":
     test_simple()
