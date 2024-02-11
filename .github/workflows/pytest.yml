@@ -12,6 +12,7 @@ on:
 
 env:
   TEST_URL: ${{secrets.TEST_URL}}
+  TEST_SLACK_URL: ${{secrets.TEST_SLACK_URL}}
 
 jobs:
   test:
