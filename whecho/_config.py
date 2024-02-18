@@ -7,9 +7,13 @@ import toml
 import socket
 import platform
 
+try:
+  config_username = getpass.getuser()
+except Exception:
+  config_username = "user"
 DEFAULT_CONFIG = {'default_url': None,
                   'version': pkg_resources.get_distribution('whecho').version,
-                  'user': getpass.getuser(),
+                  'user': config_username,
                   'os': platform.system(),
                   'machine': "auto",}
 NOT_MODIFIABLE = ['version', 'os']
