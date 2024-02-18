@@ -4,7 +4,7 @@ import os
 import subprocess
 import re
 from whecho.whecho import whecho_simple
-from whecho._config as config
+import whecho._config as config
 
 with open(config.CONFIG_PATH, 'r') as f:
         config_dict = toml.load(f)
