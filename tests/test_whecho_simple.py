@@ -4,15 +4,20 @@ import os
 import subprocess
 import re
 from whecho.whecho import whecho_simple
+from whecho import _config as config
+
+with open(config.CONFIG_PATH, 'r') as f:
+        config_dict = toml.load(f)
 
 def simple_post(env_var='TEST_URL',cli=True):
     # get the test URL
+    send_text = config_dict['os'] + ": This is an automated test message."
     url = os.environ.get(f'{env_var}', None)
     if not url:
         raise ValueError(f'No test URL passed. Did you set the ${env_var} environment variable?')
     if cli:
         # use the command line to run whecho and store any errors
-        command = f"whecho -u {url} -m 'This is an automated test message.' --debug"
+        command = f"whecho -u {url} -m {send_text} --debug"
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         stdout, stderr = process.communicate()
         
@@ -23,7 +28,7 @@ def simple_post(env_var='TEST_URL',cli=True):
         response = re.search(r'Response: <Response \[(\d+)\]>', stdout.decode('utf-8'))
         http_code = int(response.group(1))
     else:
-        resp = whecho_simple('This is an automated test message.',url,debug=True)
+        resp = whecho_simple(send_text,url,debug=True)
         # extract the HTTP code from the response
         http_code = resp.status_code
     # make sure that the HTTP code is in the 200s
