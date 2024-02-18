@@ -9,7 +9,7 @@ import platform
 
 DEFAULT_CONFIG = {'default_url': None,
                   'version': pkg_resources.get_distribution('whecho').version,
-                  'user': os.getlogin(),
+                  'user': getpass.getuser(),
                   'os': platform.system(),
                   'machine': "auto",}
 NOT_MODIFIABLE = ['version', 'os']
