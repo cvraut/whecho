@@ -41,8 +41,9 @@ def test_auto_machine():
 
     assert config_dict['machine']=="auto"
 
+    send_text = str(config_dict['os']) + ": This is an automated test message."
     # use the command line to run whecho and store any errors
-    command = f"whecho -u {url} -m 'This is an automated test message.' --debug"
+    command = f"whecho -u {url} -m {send_text} --debug"
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     stdout, stderr = process.communicate()
     
