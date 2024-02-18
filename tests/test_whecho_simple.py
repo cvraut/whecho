@@ -3,15 +3,12 @@
 import os
 import subprocess
 import re
+import platform
 from whecho.whecho import whecho_simple
-from whecho import _config as config
-
-with open(config.CONFIG_PATH, 'r') as f:
-        config_dict = toml.load(f)
 
 def simple_post(env_var='TEST_URL',cli=True):
     # get the test URL
-    send_text = config_dict['os'] + ": This is an automated test message."
+    send_text = platform.system() + ": This is an automated test message."
     url = os.environ.get(f'{env_var}', None)
     if not url:
         raise ValueError(f'No test URL passed. Did you set the ${env_var} environment variable?')
