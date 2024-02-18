@@ -8,7 +8,7 @@ from whecho.whecho import whecho_simple
 
 def simple_post(env_var='TEST_URL',cli=True):
     # get the test URL
-    send_text = platform.system() + ": This is an automated test message."
+    send_text = str(platform.system()) + ": This is an automated test message."
     url = os.environ.get(f'{env_var}', None)
     if not url:
         raise ValueError(f'No test URL passed. Did you set the ${env_var} environment variable?')
