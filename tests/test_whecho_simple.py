@@ -14,7 +14,7 @@ def simple_post(env_var='TEST_URL',cli=True):
         raise ValueError(f'No test URL passed. Did you set the ${env_var} environment variable?')
     if cli:
         # use the command line to run whecho and store any errors
-        command = f"whecho -u '{url}' -m '{send_text}' --debug"
+        command = f"whecho -u \"{url}\" -m \"{send_text}\" --debug"
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         stdout, stderr = process.communicate()
         
