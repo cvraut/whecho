@@ -9,14 +9,12 @@ from whecho.whecho import whecho_simple
 def simple_post(env_var='TEST_URL',cli=True):
     # get the test URL
     send_text = str(platform.system()) + ": This is an automated test message."
-    print(send_text)
     url = os.environ.get(f'{env_var}', None)
     if not url:
         raise ValueError(f'No test URL passed. Did you set the ${env_var} environment variable?')
     if cli:
         # use the command line to run whecho and store any errors
         command = f"whecho -u '{url}' -m '{send_text}' --debug"
-        print(command)
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         stdout, stderr = process.communicate()
         
