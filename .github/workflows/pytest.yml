@@ -17,7 +17,10 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2019, windows-2022, windows-latest, ubuntu-latest]
     environment: test
     steps:
       - name: Checkout code
