@@ -30,6 +30,12 @@ def simple_post(env_var='TEST_URL',cli=True):
         http_code = resp.status_code
     # make sure that the HTTP code is in the 200s
     assert http_code >= 200 and http_code < 300
+    
+    # we want to return stdout for re-use with other tests
+    if cli:
+        return stdout
+    else:
+        return resp
 
 def test_simple_slack():
     # test slack url with cli

@@ -7,6 +7,7 @@ import socket
 import platform
 from whecho import _config as config
 import toml
+from test_whecho_simple import simple_post
 
 def test_auto_machine():
     # get the test URL
@@ -41,20 +42,8 @@ def test_auto_machine():
 
     assert config_dict['machine']=="auto"
 
-    send_text = str(platform.system()) + " " + str(platform.release()) + ": This is an automated test message."
-    # use the command line to run whecho and store any errors
-    command = f"whecho -u \"{url}\" -m \"{send_text}\" --debug"
-    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    stdout, stderr = process.communicate()
-    
-    # make sure stderr is a binary empty string
-    assert stderr == b''
-    
-    # extract the Response from stdout (should follow pattern \nResponse: <Response [\d+]>\n)
-    response = re.search(r'Response: <Response \[(\d+)\]>', stdout.decode('utf-8'))
-    http_code = int(response.group(1))
-    # make sure that the HTTP code is in the 200s
-    assert http_code >= 200 and http_code < 300
+    # re-use code from another test case
+    stdout = simple_post()
 
     #extract the machine name from stdout (should follow pattern 'machine': '([^']*)')
     response = re.search(r"'machine': '([^']*)'", stdout.decode('utf-8'))
