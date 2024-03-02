@@ -7,6 +7,7 @@ import toml
 import socket
 import platform
 
+#getpass.getuser() causes errors when testing on Windows OS
 try:
   config_username = getpass.getuser()
 except Exception:
