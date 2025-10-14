@@ -1,6 +1,6 @@
 # Contains utility functions for the whecho project.
 
-import pkg_resources
+import importlib.metadata
 import os
 from whecho import _config as config
 import toml
@@ -8,7 +8,7 @@ from whecho import _send_message as send_message
 
 def get_version():
     """Prints the version of whecho and exits."""
-    print(pkg_resources.get_distribution('whecho').version)
+    print(importlib.metadata.version('whecho'))
     exit(0)
 
 def init():

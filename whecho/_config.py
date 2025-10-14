@@ -2,7 +2,7 @@
 
 import os
 import getpass
-import pkg_resources
+import importlib.metadata
 import toml
 import socket
 import platform
@@ -13,7 +13,7 @@ try:
 except Exception:
   config_username = "user"
 DEFAULT_CONFIG = {'default_url': None,
-                  'version': pkg_resources.get_distribution('whecho').version,
+                  'version': importlib.metadata.version('whecho'),
                   'user': config_username,
                   'os': platform.system(),
                   'machine': "auto",}
