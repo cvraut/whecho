@@ -20,8 +20,24 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2022, windows-latest, ubuntu-latest]
-        python-version: ['3.6', '3.9', '3.14']
+        include:
+          # Python 3.9 on your specified Windows and Ubuntu versions
+          - os: windows-2022
+            python-version: '3.9'
+          - os: windows-latest
+            python-version: '3.9'
+          - os: ubuntu-latest
+            python-version: '3.9'
+          # Python 3.6 on compatible runners (older versions support 3.6)
+          - os: windows-2019
+            python-version: '3.6'
+          - os: ubuntu-20.04
+            python-version: '3.6'
+          # Python 3.12 (latest stable) on compatible runners
+          - os: windows-latest
+            python-version: '3.14'
+          - os: ubuntu-latest
+            python-version: '3.14'
     environment: test
     steps:
       - name: Checkout code
