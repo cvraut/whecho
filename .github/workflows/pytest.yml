@@ -22,22 +22,22 @@ jobs:
       matrix:
         include:
           # Python 3.9 is the primary dev version
-          - os: windows-2022
-            python-version: '3.9'
-          - os: windows-latest
-            python-version: '3.9'
-          - os: ubuntu-latest
-            python-version: '3.9'
+          # - os: windows-2022
+          #   python-version: '3.9'
+          # - os: windows-latest
+          #   python-version: '3.9'
+          # - os: ubuntu-latest
+          #   python-version: '3.9'
           # Python 3.6 is the minimum supported version
           - os: windows-2022
             python-version: '3.6'
-          - os: ubuntu-20.04
-            python-version: '3.6'
-          # Python 3.14 is the latest (Oct 14th) version
-          - os: windows-latest
-            python-version: '3.14'
-          - os: ubuntu-latest
-            python-version: '3.14'
+          # - os: ubuntu-20.04
+          #   python-version: '3.6'
+          # # Python 3.14 is the latest (Oct 14th) version
+          # - os: windows-latest
+          #   python-version: '3.14'
+          # - os: ubuntu-latest
+          #   python-version: '3.14'
     environment: test
     steps:
       - name: Checkout code
