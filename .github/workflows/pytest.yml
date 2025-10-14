@@ -38,8 +38,3 @@ jobs:
       - name: Run tests
         run: tox
 
-tox.ini:
-
-[tox]
-envlist = py36,py39,py314  # Minimum, stable, latest
-
