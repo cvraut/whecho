@@ -11,7 +11,7 @@ from whecho import _send_message as send_message
 
 def get_version():
     """Prints the version of whecho and exits."""
-    print(importlib.metadata.version('whecho'))
+    print(metadata.version('whecho'))
     exit(0)
 
 def init():

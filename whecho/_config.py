@@ -16,7 +16,7 @@ try:
 except Exception:
   config_username = "user"
 DEFAULT_CONFIG = {'default_url': None,
-                  'version': importlib.metadata.version('whecho'),
+                  'version': metadata.version('whecho'),
                   'user': config_username,
                   'os': platform.system(),
                   'machine': "auto",}
