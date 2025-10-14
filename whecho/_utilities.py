@@ -1,6 +1,9 @@
 # Contains utility functions for the whecho project.
 
-import importlib.metadata
+try: # python >= 3.8
+    import importlib.metadata as metadata
+except ImportError: # python < 3.8
+    import importlib_metadata as metadata
 import os
 from whecho import _config as config
 import toml

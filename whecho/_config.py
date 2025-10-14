@@ -2,7 +2,10 @@
 
 import os
 import getpass
-import importlib.metadata
+try: # python >= 3.8
+    import importlib.metadata as metadata
+except ImportError: # python < 3.8
+    import importlib_metadata as metadata
 import toml
 import socket
 import platform
