@@ -20,20 +20,26 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2019, windows-2022, windows-latest, ubuntu-latest]
+        os: [windows-2022, windows-latest, ubuntu-latest]
+        python-version: ['3.6', '3.9', '3.14']
     environment: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Tox
         run: pip install tox
 
       - name: Run tests
         run: tox
-        
+
+tox.ini:
+
+[tox]
+envlist = py36,py39,py314  # Minimum, stable, latest
+
