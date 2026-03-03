@@ -27,6 +27,7 @@ def post_simple(message, url, conf=None, debug=False):
 def get_data(conf,message,url,debug=False):
     """General get data function for all supported webhooks."""
     url_keyword_map = {"discord.com": get_discord_data,
+                       "discordapp.com": get_discord_data,
                        "slack.com": get_slack_data,
                        "webhook.office.com": get_teams_data,
                        "webexapis.com": get_webex_data}
