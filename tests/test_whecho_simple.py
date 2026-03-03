@@ -44,9 +44,14 @@ def test_simple_slack():
 def test_simple_webex():
     # test webex url with python function
     simple_post('TEST_WEBEX_URL', False)
+
+def test_simple_discord():
+    # test discord url with python function
+    simple_post('TEST_DISCORD_URL', False)
     
 
 if __name__ == "__main__":
     simple_post() # only test discord with main function (duplicated in test_auto_machine.py)
     test_simple_slack()
     test_simple_webex()
+    test_simple_discord()
