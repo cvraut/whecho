@@ -54,4 +54,9 @@ if __name__ == "__main__":
     simple_post() # only test discord with main function (duplicated in test_auto_machine.py)
     test_simple_slack()
     test_simple_webex()
-    test_simple_discord()
+    # test_simple_discord()
+    # list out the names of all the environment variables
+    print("Environment variables: ", end="")
+    for key in os.environ.keys():
+        print(key, end=", ")
+    print()
