@@ -47,16 +47,18 @@ def test_simple_webex():
 
 def test_simple_discord():
     # test discord url with python function
-    simple_post('TEST_DISCORD_URL', False)
+    # simple_post('TEST_DISCORD_URL', False)
+    # --- debugging code for github actions ---
+    # list out the names of all the environment variables
+    print("Environment variables: ", end="")
+    for key in os.environ.keys():
+        print(key, end=", ")
+    print()
     
 
 if __name__ == "__main__":
     simple_post() # only test discord with main function (duplicated in test_auto_machine.py)
     test_simple_slack()
     test_simple_webex()
-    # test_simple_discord()
-    # list out the names of all the environment variables
-    print("Environment variables: ", end="")
-    for key in os.environ.keys():
-        print(key, end=", ")
-    print()
+    test_simple_discord()
+    
