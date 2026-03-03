@@ -4,6 +4,8 @@ Thank you for your interest in whecho's source code. New features and contributi
 
 Raise an issue or submit a pull request if you have any new ideas!
 
+**Do not open PR's to `main`**, github actions stores the webhook urls in repository secrets. If it is your first time contributing please create a new branch and **create the PR to `dev`**. The core maintainers will then evaluate the contribution and run it in github actions to verify no regression in functionality.
+
 ## building the project
 - clone the repo & go to the directory of the `pyproject.toml` file
 - clone the environment using the supplied environment.yml file
@@ -20,4 +22,5 @@ Raise an issue or submit a pull request if you have any new ideas!
   - `TEST_URL` pointing to a discord webhook
   - `TEST_SLACK_URL` pointing to a slack webhook
   - `TEST_WEBEX_URL` pointing to a webex webhook
+  - `TEST_DISCORD_URL` pointing to a discord webhook (ideally using the discordapp.com endpoint instead)
   - tox makes use of these environment variables during the automated testing
