@@ -9,11 +9,13 @@ def post_simple(message, url, conf=None, debug=False):
         conf = config.get_config()
         if not url:
             url = conf['default_url']
+    if not url:
+        raise ValueError('No URL passed. Did you run whecho --init?')
+    if not message:
+        raise ValueError('No message passed. Try whecho --help for more info.')
     data = get_data(conf,message,url,debug)
     if debug:
         print(f"Data: {data}")
-    if not url:
-        raise ValueError('No URL passed. Did you run whecho --init?')
     try:
         r = requests.post(url, json=data)
         if debug:
