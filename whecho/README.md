@@ -4,7 +4,7 @@ Thank you for your interest in whecho's source code. New features and contributi
 
 Raise an issue or submit a pull request if you have any new ideas!
 
-**Do not open PR's to `main`**, github actions stores the webhook urls in repository secrets. If it is your first time contributing please create a new branch and **create the PR to `dev`**. The core maintainers will then evaluate the contribution and run it in github actions to verify no regression in functionality.
+**Do not open PRs to `main`**, GitHub Actions stores the webhook URLs in repository secrets. If it is your first time contributing please create a new branch and **create the PR to `dev`**. The core maintainers will then evaluate the contribution and run it in GitHub Actions to verify no regression in functionality.
 
 ## building the project
 - clone the repo & go to the directory of the `pyproject.toml` file
