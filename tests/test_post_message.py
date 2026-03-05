@@ -2,15 +2,6 @@ import os
 
 from whecho._send_message import post_simple
 
-def test_empty_url():
-    # test that an error is raised when no URL is passed
-    try:
-        post_simple("This should fail", None, conf={"default_url": None})
-    except ValueError as e:
-        assert str(e) == 'No URL passed. Did you run whecho --init?'
-    else:
-        assert False, "Expected Error message was not delivered"
-
 def test_no_url_in_config():
     # test that an error is raised when no URL is passed and no URL in config
     try:
@@ -33,6 +24,5 @@ def test_no_message():
         assert False, "Expected Error message was not delivered"
 
 if __name__ == "__main__":
-    test_empty_url()
     test_no_url_in_config()
     test_no_message()
