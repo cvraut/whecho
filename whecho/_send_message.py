@@ -32,7 +32,8 @@ def get_data(conf,message,url,debug=False):
                        "discordapp.com": get_discord_data,
                        "slack.com": get_slack_data,
                        "webhook.office.com": get_teams_data,
-                       "webexapis.com": get_webex_data}
+                       "webexapis.com": get_webex_data,
+                       "environment.api.powerplatform.com": get_teams2026_data}
     # load the data based on the URL
     for keyword in url_keyword_map:
         if keyword in url:
@@ -65,6 +66,11 @@ def get_teams_data(conf,message):
 def get_webex_data(conf,message):
     """Get the data to send to webex."""
     data = {'markdown': message}
+    return data
+
+def get_teams2026_data(conf,message):
+    """Get the data to send to teams 2026."""
+    data = { "type": "AdaptiveCard", "version": "1.0", "body": [ { "type": "TextBlock", "text": message } ] }
     return data
 
 def get_default_data(conf,message):
