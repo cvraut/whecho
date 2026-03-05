@@ -10,7 +10,8 @@ def main():
     # deal with arguments
     desc = 'Linux echo with webhooks! ⚓'
     # if terminal does not support utf-8, remove the anchor emoji from the description
-    if sys.stdout.encoding.lower() != 'utf-8':
+    encoding = getattr(sys.stdout, 'encoding', 'utf-8') or 'utf-8'
+    if encoding.lower() != 'utf-8':
         desc = 'Linux echo with webhooks!'
     parser = argparse.ArgumentParser(prog='whecho', description=desc)
     parser.add_argument('--version', action='store_true', help='Prints the version of whecho and exits.')
