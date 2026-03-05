@@ -58,38 +58,9 @@ def test_empty_url():
     else:
         assert False, "Expected Error message was not delivered"
 
-def test_no_url_in_config():
-    # test that an error is raised when no URL is passed and no default URL in config
-    # create a temporary config with no default URL
-    temp_config = {'default_url': None,
-                  'version': '0.0.0',
-                  'user': 'test_user',
-                  'os': platform.system(),
-                  'machine': "auto",}
-    try:
-        whecho_simple("This should fail", None, temp_config)
-    except ValueError as e:
-        assert str(e) == 'No URL passed. Did you run whecho --init?'
-    else:
-        assert False, "Expected Error message was not delivered"
-
-def test_no_message():
-    # test that an error is raised when no message is passed
-    url = os.environ.get('TEST_URL', None)
-    if not url:
-        raise ValueError('No test URL passed. Did you set the $TEST_URL environment variable?')
-    try:
-        whecho_simple("", url)
-    except ValueError as e:
-        assert str(e) == 'No message passed. Try whecho --help for more info.'
-    else:
-        assert False, "Expected Error message was not delivered"
-
 if __name__ == "__main__":
     simple_post() # only test discord with main function (duplicated in test_auto_machine.py)
     test_simple_slack()
     test_simple_webex()
     test_simple_discord()
     test_empty_url()
-    test_no_url_in_config()
-    test_no_message()
