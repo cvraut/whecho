@@ -2,7 +2,10 @@
 
 import os
 import getpass
-import pkg_resources
+try: # python >= 3.8
+    import importlib.metadata as metadata
+except ImportError: # python < 3.8
+    import importlib_metadata as metadata
 import toml
 import socket
 import platform
@@ -13,7 +16,7 @@ try:
 except Exception:
   config_username = "user"
 DEFAULT_CONFIG = {'default_url': None,
-                  'version': pkg_resources.get_distribution('whecho').version,
+                  'version': metadata.version('whecho'),
                   'user': config_username,
                   'os': platform.system(),
                   'machine': "auto",}

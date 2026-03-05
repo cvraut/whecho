@@ -4,7 +4,6 @@ import os
 import subprocess
 import re
 import socket
-import platform
 from whecho import _config as config
 import toml
 from test_whecho_simple import simple_post

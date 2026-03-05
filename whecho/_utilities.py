@@ -1,14 +1,15 @@
 # Contains utility functions for the whecho project.
 
-import pkg_resources
-import os
+try: # python >= 3.8
+    import importlib.metadata as metadata
+except ImportError: # python < 3.8
+    import importlib_metadata as metadata
 from whecho import _config as config
-import toml
 from whecho import _send_message as send_message
 
 def get_version():
     """Prints the version of whecho and exits."""
-    print(pkg_resources.get_distribution('whecho').version)
+    print(metadata.version('whecho'))
     exit(0)
 
 def init():

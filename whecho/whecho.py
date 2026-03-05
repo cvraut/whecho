@@ -3,10 +3,17 @@ from whecho import _utilities as utilities
 from whecho._send_message import post_simple
 import requests
 from typing import Optional
+import sys
+
 
 def main():
     # deal with arguments
-    parser = argparse.ArgumentParser(prog='whecho', description='Linux echo with webhooks! ⚓')
+    desc = 'Linux echo with webhooks! ⚓'
+    # if terminal does not support utf-8, remove the anchor emoji from the description
+    encoding = getattr(sys.stdout, 'encoding', 'utf-8') or 'utf-8'
+    if encoding.lower() != 'utf-8':
+        desc = 'Linux echo with webhooks!'
+    parser = argparse.ArgumentParser(prog='whecho', description=desc)
     parser.add_argument('--version', action='store_true', help='Prints the version of whecho and exits.')
     parser.add_argument('-m', '--msg', help='The message to echo (same as 1st positional argument).')
     parser.add_argument('message', metavar="MSG" ,nargs='*', help='The message to echo.')

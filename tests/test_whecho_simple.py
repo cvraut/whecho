@@ -44,9 +44,23 @@ def test_simple_slack():
 def test_simple_webex():
     # test webex url with python function
     simple_post('TEST_WEBEX_URL', False)
+
+def test_simple_discord():
+    # test discord url with python function
+    simple_post('TEST_DISCORD_URL', False)
     
+def test_empty_url():
+    # test that an error is raised when no URL is passed
+    try:
+        whecho_simple("This should fail", None)
+    except ValueError as e:
+        assert str(e) == 'No URL passed. Did you run whecho --init?'
+    else:
+        assert False, "Expected Error message was not delivered"
 
 if __name__ == "__main__":
     simple_post() # only test discord with main function (duplicated in test_auto_machine.py)
     test_simple_slack()
     test_simple_webex()
+    test_simple_discord()
+    test_empty_url()

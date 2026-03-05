@@ -5,35 +5,48 @@ on:
     branches:
       - main
       - dev
-  pull_request:
-    branches:
-      - main
-      - dev
 
 env:
   TEST_URL: ${{secrets.TEST_URL}}
   TEST_SLACK_URL: ${{secrets.TEST_SLACK_URL}}
   TEST_WEBEX_URL: ${{secrets.TEST_WEBEX_URL}}
+  TEST_DISCORD_URL: ${{secrets.TEST_DISCORD_URL}}
 
 jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-2019, windows-2022, windows-latest, ubuntu-latest]
+        include:
+          # Python 3.9 is the primary dev version
+          - os: windows-2022
+            python-version: '3.9'
+          - os: windows-latest
+            python-version: '3.9'
+          - os: ubuntu-latest
+            python-version: '3.9'
+          # Python 3.6 is the minimum supported version
+          - os: windows-2022
+            python-version: '3.6'
+          # github actions does not support any other runners with python 3.6
+          # Python 3.14 is the latest (Oct 14th 2025) version
+          - os: windows-latest
+            python-version: '3.14'
+          - os: ubuntu-latest
+            python-version: '3.14'
     environment: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Tox
         run: pip install tox
 
       - name: Run tests
         run: tox
-        
+
