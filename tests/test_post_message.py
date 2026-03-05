@@ -1,7 +1,5 @@
 import os
-import subprocess
-import re
-import platform
+
 from whecho._send_message import post_simple
 
 def test_empty_url():

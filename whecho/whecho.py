@@ -4,7 +4,7 @@ from whecho._send_message import post_simple
 import requests
 from typing import Optional
 import sys
-import os
+
 
 def main():
     # deal with arguments
