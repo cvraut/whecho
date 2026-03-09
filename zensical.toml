@@ -1,0 +1,33 @@
+[project]
+site_name = "whecho"
+site_description = "Linux echo with webhooks!"
+site_url = "https://cvraut.github.io/whecho"
+
+nav = [
+  { "Home" = "index.md" },
+  { "Python API" = "api.md" },
+  { "Discord" = "platforms/discord.md" },
+  { "Slack" = "platforms/slack.md" },
+  { "Webex" = "platforms/webex.md" },
+  { "Microsoft Teams" = "platforms/teams.md" },
+]
+
+[project.theme]
+language = "en"
+features = [
+    "navigation.tabs",
+    "navigation.sections",
+    "navigation.top",
+    "search.highlight",
+    "content.code.copy",
+]
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
